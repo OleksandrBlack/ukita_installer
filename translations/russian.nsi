@@ -14,6 +14,6 @@ LangString inf_lable_2 ${LANG_RUSSIAN} "Пожалуйста скачайте и
 
 LangString mhddos_lang ${LANG_RUSSIAN} "--lang UA"
 
-LangString open_telegram_link ${LANG_RUSSIAN} "Посмотреть Telegram"
+LangString open_telegram_link ${LANG_RUSSIAN} "Поддержка Telegram"
 
-LangString open_discord_link ${LANG_RUSSIAN} "Посмотреть Discord"
+LangString open_discord_link ${LANG_RUSSIAN} "Поддержка Discord"
