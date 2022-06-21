@@ -69,7 +69,7 @@ Section
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayName" "${PRODUCT}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "UninstallString" '"$INSTDIR\${UNINSTALLER_NAME}.exe"'
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayIcon" '"$INSTDIR\itarmy.ico",0'
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "Publisher" "UkITA Installer"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "Publisher" "ITARMY of Ukraine"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "URLInfoAbout" "https://github.com/OleksandrBlack/ukita_installer"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoModify" 1
@@ -164,7 +164,7 @@ Section ;RUNNER
   FileWrite $9 "ECHO Cheack requirements$\r$\n"
   FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
   FileWrite $9 "ECHO OK$\r$\n"
-  FileWrite $9 "ECHO Start MHDDOS_PROXY Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start MHDDOS_PROXY Attack ItArmy Targets$\r$\n"
   FileWrite $9 "python runner.py $(mhddos_lang) --itarmy$\r$\n"
   FileWrite $9 "goto END$\r$\n"
   
@@ -176,32 +176,24 @@ Section ;RUNNER
   FileWrite $9 "ECHO Cheack requirements$\r$\n"
   FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
   FileWrite $9 "ECHO OK$\r$\n"
-  FileWrite $9 "ECHO Start MHDDOS_PROXY_POWERFULL Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start MHDDOS_PROXY_POWERFULL Attack ItArmy Targets$\r$\n"
   FileWrite $9 "python runner.py $(mhddos_lang) --itarmy --copies auto$\r$\n"
   FileWrite $9 "goto END$\r$\n"
   
   FileWrite $9 ":ITARMY_DB1000N$\r$\n"
   FileWrite $9 "CD ${DB1000N_DIR}$\r$\n"
-  FileWrite $9 "ECHO Start DB1000N Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start DB1000N Attack ItArmy Targets$\r$\n"
   FileWrite $9 "db1000n.exe$\r$\n"
   FileWrite $9 "goto END$\r$\n"
   
   FileWrite $9 ":ITARMY_DISTRESS$\r$\n"
   FileWrite $9 "CD ${DISTRESS_DIR}$\r$\n"
-  FileWrite $9 "ECHO Start DISTRESS Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start DISTRESS Attack ItArmy Targets$\r$\n"
   ${If} ${RunningX64}
 	FileWrite $9 "distress_x86_64-pc-windows-msvc.exe$\r$\n"
   ${Else}
 	FileWrite $9 "distress_i686-pc-windows-msvc.exe$\r$\n"
   ${EndIf}
-  FileWrite $9 "goto END$\r$\n"
-  
-  FileWrite $9 ":clone_proxy_finder$\r$\n"
-  FileWrite $9 "CD $INSTDIR$\r$\n"
-  FileWrite $9 "git clone ${proxy_finder_src} ${proxy_finder_dir}$\r$\n"
-  FileWrite $9 "CD ${proxy_finder_dir}$\r$\n"
-  FileWrite $9 "git pull$\r$\n"
-  FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
   FileWrite $9 "goto END$\r$\n"
 
   FileWrite $9 ":END$\r$\n"
@@ -210,6 +202,7 @@ Section ;RUNNER
 SectionEnd
 
 Section	"mhddos_proxy";INSTALL MHDDOS_PROXY
+  SectionIn RO
   SetOutPath $INSTDIR
  
   nsExec::Exec 'cmd /c "$INSTDIR\runner.bat -clone_mhddos_proxy"'
@@ -292,11 +285,11 @@ var TelegramCheckbox
 var DiscordCheckbox
 
 Function ShowFinishCheckbox
-${NSD_CreateCheckbox} 125u 175u 100u 15u "Open Telegram Support"
+${NSD_CreateCheckbox} 125u 175u 100u 15u "$(open_telegram_link)"
 Pop $TelegramCheckbox
 SetCtlColors $TelegramCheckbox "" "ffffff"
 
-${NSD_CreateCheckbox} 225u 175u 100u 15u "Open Discord Support"
+${NSD_CreateCheckbox} 225u 175u 100u 15u "$(open_discord_link)"
 Pop $DiscordCheckbox
 SetCtlColors $DiscordCheckbox "" "ffffff"
 FunctionEnd

@@ -13,3 +13,7 @@ LangString inf_lable_1 ${LANG_RUSSIAN} "	Для запуска mhddos_proxy_inst
 LangString inf_lable_2 ${LANG_RUSSIAN} "Пожалуйста скачайте и запустите утилиту UpdatePack7R2 для быстрого автоматичиского обновления Windows 7."
 
 LangString mhddos_lang ${LANG_RUSSIAN} "--lang UA"
+
+LangString open_telegram_link ${LANG_RUSSIAN} "Посмотреть Telegram"
+
+LangString open_discord_link ${LANG_RUSSIAN} "Посмотреть Discord"
