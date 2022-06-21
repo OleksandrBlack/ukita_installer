@@ -88,10 +88,10 @@
   ;Use optional a custom picture for the 'Welcome' and 'Finish' page:
   !define MUI_HEADERIMAGE
   !define MUI_HEADERIMAGE_RIGHT
-  !define MUI_HEADERIMAGE_BITMAP "resources\headerimage-r.png"
-  !define MUI_HEADERIMAGE_UNBITMAP "resources\headerimage-uninstall-r.png"
-  !define MUI_WELCOMEFINISHPAGE_BITMAP "resources\welcomefinishimage.png"  # for the Installer
-  !define MUI_UNWELCOMEFINISHPAGE_BITMAP "resources\unwelcomefinishimage.png"  # for the later created UnInstaller
+  !define MUI_HEADERIMAGE_BITMAP "resources\headerimage-r.bmp"
+  !define MUI_HEADERIMAGE_UNBITMAP "resources\headerimage-uninstall-r.bmp"
+  !define MUI_WELCOMEFINISHPAGE_BITMAP "resources\welcomefinishimage.bmp"  # for the Installer
+  !define MUI_UNWELCOMEFINISHPAGE_BITMAP "resources\unwelcomefinishimage.bmp"  # for the later created UnInstaller
 
   ;Optional no descripton for all components
   !define MUI_COMPONENTSPAGE_NODESC
