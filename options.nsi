@@ -102,11 +102,14 @@
   ;For the installer
   !insertmacro MUI_PAGE_WELCOME # simply remove this and other pages if you don't want it
   
-  Page Custom win7_info
+  Page Custom Page_Win7Info
   
   !insertmacro MUI_PAGE_LICENSE "LICENSE" # link to an ANSI encoded license file
   !insertmacro MUI_PAGE_COMPONENTS # remove if you don't want to list components
   !insertmacro MUI_PAGE_DIRECTORY
+  
+  Page Custom Page_TermsOfUse
+  
   !insertmacro MUI_PAGE_INSTFILES
 
   !define MUI_PAGE_CUSTOMFUNCTION_SHOW ShowFinishCheckbox

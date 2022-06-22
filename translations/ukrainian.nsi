@@ -17,3 +17,11 @@ LangString mhddos_lang ${LANG_UKRAINIAN} "--lang UA"
 LangString open_telegram_link ${LANG_UKRAINIAN} "Підтримка Telegram"
 
 LangString open_discord_link ${LANG_UKRAINIAN} "Підтримка Discord"
+
+LangString terms_title ${LANG_UKRAINIAN} "Умови використання"
+
+LangString terms_subtitle ${LANG_UKRAINIAN} "Умови використання $(^NameDA)"
+
+LangString terms_terms ${LANG_UKRAINIAN} "Продовжуючи встановлення, ви обіцяєте:$\n$\r$\n- Застосовувати додатки тільки для допомоги 'IT Army of Ukraine' з єдиною метою протистояння російській агресії$\r$\n$\r- Застосовувати, виключно, проти серверів, які розміщені на території рфії або тимчасово окупованих територіях$\r$\n$\r- Ні в якому разі, не використовувати для злого наміру, пірацтва, тероризму чи нелюдських дій."
+
+LangString terms_firewall ${LANG_UKRAINIAN} "Під час інсталяції, до 'Брандмауер Windows' та 'Захисник Windows', будуть внесені необхідні налаштування для правильної роботи додатків."
