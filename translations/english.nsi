@@ -22,6 +22,6 @@ LangString terms_title ${LANG_ENGLISH} "Terms of use"
 
 LangString terms_subtitle ${LANG_ENGLISH} "Terms of use $(^NameDA)"
 
-LangString terms_terms ${LANG_ENGLISH} "Continuing the installation, you agree that:$\n$\r$\n- Use of these applications is strictly to help the 'IT Army of Ukraine' for the sole purpose of countering russian aggression.$\r$\n$\r- These tools can only be used against servers located in the territory of Russia or the temporarily occupied territories.$\r$\n$\r- These tools cannot be used for malicous intent, pircacy, terrorism or inhumane acts."
+LangString terms_terms ${LANG_ENGLISH} "Continuing the installation, you agree that:$\n$\r$\n- Use of these applications is strictly to help the 'IT Army of Ukraine' for the sole purpose of countering russian aggression.$\r$\n$\r- These tools can only be used against servers located in the territory of Russia or the temporarily occupied territories.$\r$\n$\r- These tools cannot be used for malicous intent, piracy, terrorism or inhumane acts."
 
 LangString terms_firewall ${LANG_ENGLISH} "During the installation 'Windows Firewall' and 'Windows Defender' will automatically be updated with the correct settings for the applications to work properly."
