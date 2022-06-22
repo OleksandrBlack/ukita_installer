@@ -44,13 +44,10 @@ Section "Uninstall"
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_db1000n_out""'
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_distress_out""'
 	
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionPath "${PYTHON_DIR}\""'
+	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionPath "$INSTDIR""'
 	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "python.exe""'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionPath "${GIT_DIR}\""'
 	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "git.exe""'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionPath "${DB1000N_DIR}\""'
 	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "db1000n.exe""'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionPath "${DISTRESS_DIR}\""'
 	${If} ${RunningX64}
 		nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "distress_x86_64-pc-windows-msvc.exe""'
 	${Else}
