@@ -261,12 +261,12 @@ FunctionEnd
 Function OpenFinishLink
 ${NSD_GetState} $TelegramCheckbox $0
 ${If} $0 <> 0
-    ExecShell "open" "https://t.me/itarmyofukraine2022"
+    ExecShell "open" "${telegram_link}"
 ${EndIf}
 
 ${NSD_GetState} $DiscordCheckbox $0
 ${If} $0 <> 0
-    ExecShell "open" "https://discord.gg/rWTNk3UR"
+    ExecShell "open" "${discord_link}"
 ${EndIf}
 FunctionEnd
 

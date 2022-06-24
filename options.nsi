@@ -18,9 +18,13 @@
 
   ;Define name of the product
   !define PRODUCT "UkITA Installer"
-  !define PRODUCT_VERSION "2.0.0"
+  !define PRODUCT_VERSION "2.0.1"
   !define INSTALLER_NAME "ukita_installer"
   !define UNINSTALLER_NAME "uninstall"
+  
+  !define telegram_link "https://t.me/itarmyofukraine2022"
+  
+  !define discord_link "https://discord.gg/fyK45psV"
   
   BrandingText "${PRODUCT} ${PRODUCT_VERSION}"
   
