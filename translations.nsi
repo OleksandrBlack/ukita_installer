@@ -10,4 +10,5 @@
 ;The languages should be in alphabetical order
 !include english.nsi
 !include russian.nsi
+!include spanish.nsi
 !include ukrainian.nsi
