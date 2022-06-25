@@ -1,15 +1,15 @@
 ;Installer strings
 
-;LangString inst_unist ${LANG_SPANISH} "Desinstalando la versión anterior."
+;LangString inst_unist ${LANG_ENGLISH} "Desinstalando la versión anterior."
 LangString inst_unist ${LANG_SPANISH} "Desinstalando la versión anterior."
 
-;LangString inst_uninstall_question ${LANG_SPANISH} "La versión actual será desinstalada."
+;LangString inst_uninstall_question ${LANG_ENGLISH} "La versión actual será desinstalada."
 LangString inst_uninstall_question ${LANG_SPANISH} "La versión actual será desinstalada."
 
 LangString inf_title ${LANG_SPANISH} "Comprobando las dependencias"
 LangString inf_subtitle ${LANG_SPANISH} "Leer antes de instalar"
 LangString inf_button ${LANG_SPANISH} "Descargar"
-LangString inf_lable_1 ${LANG_SPANISH} "	Para ejecutar mhddos_proxy_installer en Windows 7, necesitas instalar las últimas actualizaciones."
+LangString inf_lable_1 ${LANG_SPANISH} "        Para ejecutar mhddos_proxy_installer en Windows 7, necesitas instalar las últimas actualizaciones."
 LangString inf_lable_2 ${LANG_SPANISH} "Por favor, descargue y ejecute la utilidad UpdatePack7R2 para actualizar rápidamente Windows 7 de forma automática."
 
 LangString mhddos_lang ${LANG_SPANISH} "--lang ES"
