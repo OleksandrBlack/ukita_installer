@@ -17,10 +17,14 @@
   SetDatablockOptimize ON
 
   ;Define name of the product
-  !define PRODUCT "UKITA Installer"
-  !define PRODUCT_VERSION "2.0.0"
+  !define PRODUCT "UkITA Installer"
+  !define PRODUCT_VERSION "2.0.1"
   !define INSTALLER_NAME "ukita_installer"
   !define UNINSTALLER_NAME "uninstall"
+  
+  !define telegram_link "https://t.me/itarmyofukraine2022"
+  
+  !define discord_link "https://discord.gg/fyK45psV"
   
   BrandingText "${PRODUCT} ${PRODUCT_VERSION}"
   
@@ -102,11 +106,14 @@
   ;For the installer
   !insertmacro MUI_PAGE_WELCOME # simply remove this and other pages if you don't want it
   
-  Page Custom win7_info
+  Page Custom Page_Win7Info
   
   !insertmacro MUI_PAGE_LICENSE "LICENSE" # link to an ANSI encoded license file
   !insertmacro MUI_PAGE_COMPONENTS # remove if you don't want to list components
   !insertmacro MUI_PAGE_DIRECTORY
+  
+  Page Custom Page_TermsOfUse
+  
   !insertmacro MUI_PAGE_INSTFILES
 
   !define MUI_PAGE_CUSTOMFUNCTION_SHOW ShowFinishCheckbox

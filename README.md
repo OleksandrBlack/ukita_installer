@@ -1,5 +1,3 @@
-# mhddos_proxy_installer
-
 Use The fllowing commands to build the installer
 
 sudo apt-get install -y nsis unzip
@@ -17,4 +15,3 @@ wget -q -P requirements/distress/x86/ https://github.com/Yneth/distress-releases
 # Make build
 mkdir output
 makensis ukita_installer.nsi
-

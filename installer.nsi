@@ -17,44 +17,6 @@ Section "-hidden"
 
 SectionEnd
 
-Var info_down_btn
-Var info_label_1
-Var info_label_2
-Var info_font
-
-Function win7_info
-${If} ${IsWin7}
-  ; custom font definitions
-  CreateFont $info_font "Microsoft Sans Serif" "9.75" "700"
-  
-  ; === info (type: Dialog) ===
-  nsDialogs::Create 1018
-  Pop $0
-	
-  !insertmacro MUI_HEADER_TEXT $(inf_title) $(inf_subtitle)
-  
-  ; === down_btn (type: Button) ===
-  ${NSD_CreateButton} 217u 106u 64u 15u $(inf_button)
-  Pop $info_down_btn
-  ${NSD_OnClick} $info_down_btn download_updater
-  
-  ; === label_1 (type: Label) ===
-  ${NSD_CreateLabel} 8u 20u 280u 28u $(inf_lable_1)
-  Pop $info_label_1
-  SendMessage $info_label_1 ${WM_SETFONT} $info_font 0
-  
-  ; === label_2 (type: Label) ===
-  ${NSD_CreateLabel} 8u 71u 273u 22u $(inf_lable_2)
-  Pop $info_label_2
-  
-	nsDialogs::Show
-${EndIf}
-FunctionEnd
-
-Function download_updater
-    ExecShell "open" "https://update7.simplix.info/UpdatePack7R2.exe" 
-FunctionEnd
-
 Section
   SectionIn RO # Just means if in component mode this is locked
 
@@ -69,7 +31,7 @@ Section
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayName" "${PRODUCT}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "UninstallString" '"$INSTDIR\${UNINSTALLER_NAME}.exe"'
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayIcon" '"$INSTDIR\itarmy.ico",0'
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "Publisher" "UkITA Installer"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "Publisher" "ITARMY of Ukraine"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "URLInfoAbout" "https://github.com/OleksandrBlack/ukita_installer"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoModify" 1
@@ -82,6 +44,8 @@ Section
   ;Create optional start menu shortcut for uninstaller and Main component
   CreateDirectory "$SMPROGRAMS\${PRODUCT}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT}\Uninstall ${PRODUCT}.lnk" "$INSTDIR\${UNINSTALLER_NAME}.exe" "" "$INSTDIR\${UNINSTALLER_NAME}.exe" 0
+  
+  nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionPath "$INSTDIR""'
 
   ;Create uninstaller
   WriteUninstaller "${UNINSTALLER_NAME}.exe"
@@ -93,7 +57,7 @@ Section
 	
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_git_in" dir=in action=allow program="${GIT_DIR}\git.exe" enable=yes"'
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_git_out" dir=out action=allow program="${GIT_DIR}\git.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Add-MpPreference -ExclusionProcess "git.exe""'
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "git.exe""'
 
 	File /r "requirements\git\*"
 SectionEnd
@@ -104,7 +68,7 @@ Section
 	
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_python_in" dir=in action=allow program="${PYTHON_DIR}\python.exe" enable=yes"'
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_python_out" dir=out action=allow program="${PYTHON_DIR}\python.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Add-MpPreference -ExclusionProcess "python.exe""'
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "python.exe""'
  
 	${If} ${RunningX64}
 		File /r "requirements\python\x64\*"
@@ -164,7 +128,7 @@ Section ;RUNNER
   FileWrite $9 "ECHO Cheack requirements$\r$\n"
   FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
   FileWrite $9 "ECHO OK$\r$\n"
-  FileWrite $9 "ECHO Start MHDDOS_PROXY Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start MHDDOS_PROXY Attack ItArmy Targets$\r$\n"
   FileWrite $9 "python runner.py $(mhddos_lang) --itarmy$\r$\n"
   FileWrite $9 "goto END$\r$\n"
   
@@ -176,32 +140,24 @@ Section ;RUNNER
   FileWrite $9 "ECHO Cheack requirements$\r$\n"
   FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
   FileWrite $9 "ECHO OK$\r$\n"
-  FileWrite $9 "ECHO Start MHDDOS_PROXY_POWERFULL Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start MHDDOS_PROXY_POWERFULL Attack ItArmy Targets$\r$\n"
   FileWrite $9 "python runner.py $(mhddos_lang) --itarmy --copies auto$\r$\n"
   FileWrite $9 "goto END$\r$\n"
   
   FileWrite $9 ":ITARMY_DB1000N$\r$\n"
   FileWrite $9 "CD ${DB1000N_DIR}$\r$\n"
-  FileWrite $9 "ECHO Start DB1000N Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start DB1000N Attack ItArmy Targets$\r$\n"
   FileWrite $9 "db1000n.exe$\r$\n"
   FileWrite $9 "goto END$\r$\n"
   
   FileWrite $9 ":ITARMY_DISTRESS$\r$\n"
   FileWrite $9 "CD ${DISTRESS_DIR}$\r$\n"
-  FileWrite $9 "ECHO Start DISTRESS Attack ItArmy Target$\r$\n"
+  FileWrite $9 "ECHO Start DISTRESS Attack ItArmy Targets$\r$\n"
   ${If} ${RunningX64}
 	FileWrite $9 "distress_x86_64-pc-windows-msvc.exe$\r$\n"
   ${Else}
 	FileWrite $9 "distress_i686-pc-windows-msvc.exe$\r$\n"
   ${EndIf}
-  FileWrite $9 "goto END$\r$\n"
-  
-  FileWrite $9 ":clone_proxy_finder$\r$\n"
-  FileWrite $9 "CD $INSTDIR$\r$\n"
-  FileWrite $9 "git clone ${proxy_finder_src} ${proxy_finder_dir}$\r$\n"
-  FileWrite $9 "CD ${proxy_finder_dir}$\r$\n"
-  FileWrite $9 "git pull$\r$\n"
-  FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
   FileWrite $9 "goto END$\r$\n"
 
   FileWrite $9 ":END$\r$\n"
@@ -210,6 +166,7 @@ Section ;RUNNER
 SectionEnd
 
 Section	"mhddos_proxy";INSTALL MHDDOS_PROXY
+  SectionIn RO
   SetOutPath $INSTDIR
  
   nsExec::Exec 'cmd /c "$INSTDIR\runner.bat -clone_mhddos_proxy"'
@@ -227,7 +184,7 @@ Section	"db1000n"
 	
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_db1000n_in" dir=in action=allow program="${DB1000N_DIR}\db1000n.exe" enable=yes"'
 	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_db1000n_out" dir=out action=allow program="${DB1000N_DIR}\db1000n.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Add-MpPreference -ExclusionProcess "db1000n.exe""'
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "db1000n.exe""'
 	
 	File "resources\itarmy_d1000n.ico"
 
@@ -243,15 +200,15 @@ SectionEnd
 
 Section	"distress"
 	SetOutPath ${DISTRESS_DIR}
-	
+
 	${If} ${RunningX64}
 		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_in" dir=in action=allow program="${DISTRESS_DIR}\distress_x86_64-pc-windows-msvc.exe" enable=yes"'
 		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_out" dir=out action=allow program="${DISTRESS_DIR}\distress_x86_64-pc-windows-msvc.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "powershell -exec bypass -Command Add-MpPreference -ExclusionProcess "distress_x86_64-pc-windows-msvc.exe""'
+		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "distress_x86_64-pc-windows-msvc.exe""'
 	${Else}
 		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_in" dir=in action=allow program="${DISTRESS_DIR}\distress_i686-pc-windows-msvc.exe" enable=yes"'
 		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_out" dir=out action=allow program="${DISTRESS_DIR}\distress_i686-pc-windows-msvc.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "powershell -exec bypass -Command Add-MpPreference -ExclusionProcess "distress_i686-pc-windows-msvc.exe""'
+		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "distress_i686-pc-windows-msvc.exe""'
 	${EndIf}
 	
 	File "resources\itarmy_distress.ico"
@@ -292,11 +249,11 @@ var TelegramCheckbox
 var DiscordCheckbox
 
 Function ShowFinishCheckbox
-${NSD_CreateCheckbox} 125u 175u 100u 15u "Open Telegram Support"
+${NSD_CreateCheckbox} 125u 175u 100u 15u "$(open_telegram_link)"
 Pop $TelegramCheckbox
 SetCtlColors $TelegramCheckbox "" "ffffff"
 
-${NSD_CreateCheckbox} 225u 175u 100u 15u "Open Discord Support"
+${NSD_CreateCheckbox} 225u 175u 100u 15u "$(open_discord_link)"
 Pop $DiscordCheckbox
 SetCtlColors $DiscordCheckbox "" "ffffff"
 FunctionEnd
@@ -304,12 +261,12 @@ FunctionEnd
 Function OpenFinishLink
 ${NSD_GetState} $TelegramCheckbox $0
 ${If} $0 <> 0
-    ExecShell "open" "https://t.me/itarmyofukraine2022"
+    ExecShell "open" "${telegram_link}"
 ${EndIf}
 
 ${NSD_GetState} $DiscordCheckbox $0
 ${If} $0 <> 0
-    ExecShell "open" "https://discord.gg/rWTNk3UR"
+    ExecShell "open" "${discord_link}"
 ${EndIf}
 FunctionEnd
 

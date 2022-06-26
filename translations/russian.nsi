@@ -13,3 +13,15 @@ LangString inf_lable_1 ${LANG_RUSSIAN} "	Для запуска mhddos_proxy_inst
 LangString inf_lable_2 ${LANG_RUSSIAN} "Пожалуйста скачайте и запустите утилиту UpdatePack7R2 для быстрого автоматичиского обновления Windows 7."
 
 LangString mhddos_lang ${LANG_RUSSIAN} "--lang UA"
+
+LangString open_telegram_link ${LANG_RUSSIAN} "Поддержка Telegram"
+
+LangString open_discord_link ${LANG_RUSSIAN} "Поддержка Discord"
+
+LangString terms_title ${LANG_RUSSIAN} "Условия эксплуатации"
+
+LangString terms_subtitle ${LANG_RUSSIAN} "Условия эксплуатации $(^NameDA)"
+
+LangString terms_terms ${LANG_RUSSIAN} "Продолжая установку, вы обещаете:$\n$\r$\n- Применять приложения только для помощи 'IT Army of Ukraine' с целью противостояния российской агрессии.$\r$\n$\r- Применять исключительно против серверов, размещенных на территории рфии или временно оккупированных территориях.$\r$\n$\r- Ни в коем случае, не использовать для злого умысла, пиратства, терроризма или бесчеловечных действий."
+
+LangString terms_firewall ${LANG_RUSSIAN} "Во время установки, в 'Брандмауэр Windows' и 'Защитник Windows' будут внесены необходимые настройки для правильной работы приложений."
