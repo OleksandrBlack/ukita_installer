@@ -12,8 +12,8 @@ LangString inf_button ${LANG_SPANISH} "Descargar"
 LangString inf_lable_1 ${LANG_SPANISH} "        Para ejecutar mhddos_proxy_installer en Windows 7, necesitas instalar las últimas actualizaciones."
 LangString inf_lable_2 ${LANG_SPANISH} "Por favor, descargue y ejecute la utilidad UpdatePack7R2 para actualizar rápidamente Windows 7 de forma automática."
 
-;Need requires Spanish language support "--lang ES" https://github.com/porthole-ascend-cinnamon/mhddos_proxy/blob/main/src/i18n.py
-LangString mhddos_lang ${LANG_SPANISH} "--lang EN"
+;Need requires language support "--lang NEW_LNG" https://github.com/porthole-ascend-cinnamon/mhddos_proxy/blob/main/src/i18n.py
+LangString mhddos_lang ${LANG_SPANISH} "--lang es"
 
 LangString open_telegram_link ${LANG_SPANISH} "Abrir el soporte de Telegram"
 
