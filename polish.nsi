@@ -22,6 +22,6 @@ LangString terms_title ${LANG_POLISH} "Warunki użytkowania"
 
 LangString terms_subtitle ${LANG_POLISH} "Warunki użytkowania $(^NameDA)"
 
-LangString terms_terms ${LANG_POLISH} "Kontynuując instalację, zgadzasz się, że: Korzystanie z tych aplikacji jest ściśle związane z pomocą "IT Army of Ukraine" wyłącznie w celu przeciwdziałania rosyjskiej agresji. Te narzędzia mogą być używane tylko przeciwko serwerom znajdującym się na terytorium Rosji lub na terytoriach tymczasowo okupowanych. Narzędzia te nie mogą być używane w złych zamiarach, piractwie, terroryzmie lub nieludzkich aktach."
+LangString terms_terms ${LANG_POLISH} "Kontynuując instalację, zgadzasz się, że: Korzystanie z tych aplikacji jest ściśle związane z pomocą IT Army of Ukraine wyłącznie w celu przeciwdziałania rosyjskiej agresji. Te narzędzia mogą być używane tylko przeciwko serwerom znajdującym się na terytorium Rosji lub na terytoriach tymczasowo okupowanych. Narzędzia te nie mogą być używane w złych zamiarach, piractwie, terroryzmie lub nieludzkich aktach."
 
-LangString terms_firewall ${LANG_POLISH} "Podczas instalacji "Windows Firewall" i "Windows Defender" zostaną automatycznie zaktualizowane o prawidłowe ustawienia, aby aplikacje działały poprawnie."
+LangString terms_firewall ${LANG_POLISH} "Podczas instalacji Windows Firewall i Windows Defender zostaną automatycznie zaktualizowane o prawidłowe ustawienia, aby aplikacje działały poprawnie."
