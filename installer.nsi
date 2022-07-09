@@ -51,39 +51,12 @@ Section
   WriteUninstaller "${UNINSTALLER_NAME}.exe"
 SectionEnd
 
-Section
-	SectionIn RO
-	SetOutPath ${GIT_DIR}
-	
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_git_in" dir=in action=allow program="${GIT_DIR}\git.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_git_out" dir=out action=allow program="${GIT_DIR}\git.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "git.exe""'
-
-	File /r "requirements\git\*"
-SectionEnd
-
-Section
-	SectionIn RO
-	SetOutPath ${PYTHON_DIR}
-	
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_python_in" dir=in action=allow program="${PYTHON_DIR}\python.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_python_out" dir=out action=allow program="${PYTHON_DIR}\python.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "python.exe""'
- 
-	${If} ${RunningX64}
-		File /r "requirements\python\x64\*"
-	${Else}
-		File /r "requirements\python\x86\*"
-	${EndIf}  
-SectionEnd
-
 Section ;RUNNER
   SetOutPath $INSTDIR
   
   FileOpen $9 runner.bat w
   FileWrite $9 "@ECHO off$\r$\n"
   FileWrite $9 "SET AUTO_MH=1$\r$\n"
-  FileWrite $9 "SET PATH=${PYTHON_DIR};${PYTHON_DIR}\Scripts;${GIT_DIR}\git;%PATH%$\r$\n"
   FileWrite $9 "CLS$\r$\n"
   FileWrite $9 "COLOR 0A$\r$\n"
   
@@ -94,9 +67,6 @@ Section ;RUNNER
   FileWrite $9 "FOR %%A IN (%*) DO (IF '%%A'=='-itarmy_powerfull' goto ITARMY_POWERFULL)$\r$\n"
   FileWrite $9 "FOR %%A IN (%*) DO (IF '%%A'=='-itarmy_db1000n' goto ITARMY_DB1000N)$\r$\n"
   FileWrite $9 "FOR %%A IN (%*) DO (IF '%%A'=='-itarmy_distress' goto ITARMY_DISTRESS)$\r$\n"
-
-  FileWrite $9 ":RUN_CLONE_MHDDOS_PROXY$\r$\n"
-  FileWrite $9 "FOR %%A IN (%*) DO (IF '%%A'=='-clone_mhddos_proxy' goto CLONE_MHDDOS_PROXY)$\r$\n"
   
   FileWrite $9 ":MAIN_INFO$\r$\n"
   FileWrite $9 "ECHO.$\r$\n"
@@ -110,38 +80,24 @@ Section ;RUNNER
   FileWrite $9 "if '%choice%'=='3' goto ITARMY_DISTRESS$\r$\n"
   FileWrite $9 "goto END$\r$\n"
   
-  FileWrite $9 ":CLONE_MHDDOS_PROXY$\r$\n"
-  FileWrite $9 "CD $INSTDIR$\r$\n"
-  FileWrite $9 "git clone ${MHDDOS_PROXY_SRC} ${MHDDOS_PROXY_DIR}$\r$\n"
-  FileWrite $9 "CD ${MHDDOS_PROXY_DIR}$\r$\n"
-  FileWrite $9 "git pull$\r$\n"
-  FileWrite $9 "python -m pip install --upgrade setuptools$\r$\n"
-  FileWrite $9 "python -m pip install --upgrade pip$\r$\n"
-  FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
-  FileWrite $9 "goto END$\r$\n"
-  
   FileWrite $9 ":ITARMY$\r$\n"
   FileWrite $9 "CD ${MHDDOS_PROXY_DIR}$\r$\n"
-  FileWrite $9 "ECHO Cheack Update mhddos_proxy$\r$\n"
-  FileWrite $9 "git pull$\r$\n"
-  FileWrite $9 "ECHO OK$\r$\n"
-  FileWrite $9 "ECHO Cheack requirements$\r$\n"
-  FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
-  FileWrite $9 "ECHO OK$\r$\n"
   FileWrite $9 "ECHO Start MHDDOS_PROXY Attack ItArmy Targets$\r$\n"
-  FileWrite $9 "python runner.py $(mhddos_lang) --itarmy$\r$\n"
+  ${If} ${RunningX64}
+	FileWrite $9 "mhddos_proxy_win.exe $(mhddos_lang)$\r$\n"
+  ${Else}
+	FileWrite $9 "mhddos_proxy_win_x86.exe $(mhddos_lang)$\r$\n"
+  ${EndIf}
   FileWrite $9 "goto END$\r$\n"
-  
+
   FileWrite $9 ":ITARMY_POWERFULL$\r$\n"
   FileWrite $9 "CD ${MHDDOS_PROXY_DIR}$\r$\n"
-  FileWrite $9 "ECHO Cheack Update mhddos_proxy$\r$\n"
-  FileWrite $9 "git pull$\r$\n"
-  FileWrite $9 "ECHO OK$\r$\n"
-  FileWrite $9 "ECHO Cheack requirements$\r$\n"
-  FileWrite $9 "python -m pip install -r requirements.txt$\r$\n"
-  FileWrite $9 "ECHO OK$\r$\n"
   FileWrite $9 "ECHO Start MHDDOS_PROXY_POWERFULL Attack ItArmy Targets$\r$\n"
-  FileWrite $9 "python runner.py $(mhddos_lang) --itarmy --copies auto$\r$\n"
+  ${If} ${RunningX64}
+	FileWrite $9 "mhddos_proxy_win.exe $(mhddos_lang) --copies auto$\r$\n"
+  ${Else}
+	FileWrite $9 "mhddos_proxy_win_x86.exe $(mhddos_lang) --copies auto$\r$\n"
+  ${EndIf}
   FileWrite $9 "goto END$\r$\n"
   
   FileWrite $9 ":ITARMY_DB1000N$\r$\n"
@@ -165,17 +121,30 @@ Section ;RUNNER
   FileClose $9
 SectionEnd
 
-Section	"mhddos_proxy";INSTALL MHDDOS_PROXY
-  SectionIn RO
-  SetOutPath $INSTDIR
+Section	"mhddos_proxy"
+  SetOutPath ${MHDDOS_PROXY_DIR}
  
-  nsExec::Exec 'cmd /c "$INSTDIR\runner.bat -clone_mhddos_proxy"'
+	${If} ${RunningX64}
+		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_in" dir=in action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" enable=yes"'
+		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_out" dir=out action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" enable=yes"'
+		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "mhddos_proxy_win.exe""'
+	${Else}
+		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_in" dir=in action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win_x86.exe" enable=yes"'
+		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_out" dir=out action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win_x86.exe" enable=yes"'
+		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "mhddos_proxy_win_x86.exe""'
+	${EndIf}
   
   File "resources\itarmy_mhddos.ico"
   File "resources\itarmy_mhddos_powerfull.ico"
+  
+	${If} ${RunningX64}
+		File /r "requirements\mhddos\x64\*"
+	${Else}
+		File /r "requirements\mhddos\x86\*"
+	${EndIf}  
    
-  CreateShortCut "$DESKTOP\MHDDOS_PROXY.lnk" "$INSTDIR\runner.bat" "-itarmy" "$INSTDIR\itarmy_mhddos.ico" 0
-  CreateShortCut "$DESKTOP\MHDDOS_PROXY_POWERFULL.lnk" "$INSTDIR\runner.bat" "-itarmy_powerfull" "$INSTDIR\itarmy_mhddos_powerfull.ico" 0
+  CreateShortCut "$DESKTOP\MHDDOS_PROXY.lnk" "$INSTDIR\runner.bat" "-itarmy" "${MHDDOS_PROXY_DIR}\itarmy_mhddos.ico" 0
+  CreateShortCut "$DESKTOP\MHDDOS_PROXY_POWERFULL.lnk" "$INSTDIR\runner.bat" "-itarmy_powerfull" "${MHDDOS_PROXY_DIR}\itarmy_mhddos_powerfull.ico" 0
 
 SectionEnd
 

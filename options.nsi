@@ -18,7 +18,7 @@
 
   ;Define name of the product
   !define PRODUCT "UkITA Installer"
-  !define PRODUCT_VERSION "2.0.5"
+  !define PRODUCT_VERSION "2.0.6"
   !define INSTALLER_NAME "ukita_installer"
   !define UNINSTALLER_NAME "uninstall"
   
@@ -28,19 +28,11 @@
   
   BrandingText "${PRODUCT} ${PRODUCT_VERSION}"
   
-  !define MHDDOS_PROXY_SRC "https://github.com/porthole-ascend-cinnamon/mhddos_proxy.git"
-  
   !define MHDDOS_PROXY_DIR "$INSTDIR\mhddos_proxy"
-  
-  ;!define MHDDOS_PROXY_BETA_DIR "$INSTDIR\mhddos_proxy_beta"
   
   !define DB1000N_DIR "$INSTDIR\db1000n"
   
   !define DISTRESS_DIR "$INSTDIR\distress"
-  
-  !define PYTHON_DIR "$INSTDIR\python"
-  
-  !define GIT_DIR "$INSTDIR\git\git"
 
   ;Installer Version Information
   VIAddVersionKey "ProductName" "${PRODUCT}"
