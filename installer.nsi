@@ -84,19 +84,9 @@ Section ;RUNNER
   FileWrite $9 "CD ${MHDDOS_PROXY_DIR}$\r$\n"
   FileWrite $9 "ECHO Start MHDDOS_PROXY Attack ItArmy Targets$\r$\n"
   ${If} ${RunningX64}
-	FileWrite $9 "mhddos_proxy_win.exe $(mhddos_lang)$\r$\n"
+	FileWrite $9 "mhddos_proxy_win.exe$\r$\n"
   ${Else}
-	FileWrite $9 "mhddos_proxy_win_x86.exe $(mhddos_lang)$\r$\n"
-  ${EndIf}
-  FileWrite $9 "goto END$\r$\n"
-
-  FileWrite $9 ":ITARMY_POWERFULL$\r$\n"
-  FileWrite $9 "CD ${MHDDOS_PROXY_DIR}$\r$\n"
-  FileWrite $9 "ECHO Start MHDDOS_PROXY_POWERFULL Attack ItArmy Targets$\r$\n"
-  ${If} ${RunningX64}
-	FileWrite $9 "mhddos_proxy_win.exe $(mhddos_lang) --copies auto$\r$\n"
-  ${Else}
-	FileWrite $9 "mhddos_proxy_win_x86.exe $(mhddos_lang) --copies auto$\r$\n"
+	FileWrite $9 "mhddos_proxy_win_x86.exe$\r$\n"
   ${EndIf}
   FileWrite $9 "goto END$\r$\n"
   
@@ -123,19 +113,39 @@ SectionEnd
 
 Section	"mhddos_proxy"
   SetOutPath ${MHDDOS_PROXY_DIR}
- 
-	${If} ${RunningX64}
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_in" dir=in action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_out" dir=out action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "mhddos_proxy_win.exe""'
-	${Else}
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_in" dir=in action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win_x86.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_mhddos_out" dir=out action=allow program="${MHDDOS_PROXY_DIR}\mhddos_proxy_win_x86.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "mhddos_proxy_win_x86.exe""'
-	${EndIf}
+
+  ;Add mhddos firewall rules
+  !include "firewall\inst_fw_mhddos.nsi"
   
-  File "resources\itarmy_mhddos.ico"
-  File "resources\itarmy_mhddos_powerfull.ico"
+  File "resources\mhddos_config.ico"
+  
+  FileOpen $9 mhddos.ini w
+  FileWrite $9 "###Settings mhddos_proxy$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##Change language:$\r$\n"
+  FileWrite $9 "#lang = ua | en | es | de | pl | lt$\r$\n"
+  FileWrite $9 "lang = $(mhddos_lang)$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##Run multiple copies (auto for max value, requires 3+ core CPU and stable network):$\r$\n"
+  FileWrite $9 "#copies = 1 | 2 | auto$\r$\n"
+  FileWrite $9 "copies  = 1$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##Add your IP/VPN to the attack (when using VPN or dedicated server):$\r$\n"
+  FileWrite $9 "#vpn = true | false$\r$\n"
+  FileWrite $9 "vpn = false$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##Change VPN usage percentage (Default 2%):$\r$\n"
+  FileWrite $9 "#vpn-percents = 2$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##Number of threads per copy:$\r$\n"
+  FileWrite $9 "#threads = 8000$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##To specify custom proxy(ies), use the proxy option$\r$\n"
+  FileWrite $9 "#proxy = [socks4://114.231.123.38:3065, socks5://114.231.123.38:1080]$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##If the list of proxies is too big, use the local or remote file option proxies. Each proxy should be on a new line$\r$\n"
+  FileWrite $9 "#proxies = proxies.txt | https://pastebin.com/raw/UkFWzLOt$\r$\n"
+  FileClose $9
   
 	${If} ${RunningX64}
 		File /r "requirements\mhddos\x64\*"
@@ -143,17 +153,16 @@ Section	"mhddos_proxy"
 		File /r "requirements\mhddos\x86\*"
 	${EndIf}  
    
-  CreateShortCut "$DESKTOP\MHDDOS_PROXY.lnk" "$INSTDIR\runner.bat" "-itarmy" "${MHDDOS_PROXY_DIR}\itarmy_mhddos.ico" 0
-  CreateShortCut "$DESKTOP\MHDDOS_PROXY_POWERFULL.lnk" "$INSTDIR\runner.bat" "-itarmy_powerfull" "${MHDDOS_PROXY_DIR}\itarmy_mhddos_powerfull.ico" 0
+  CreateShortCut "$DESKTOP\MHDDOS_PROXY.lnk" "${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" "" "${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" 0
+  CreateShortCut "$DESKTOP\MHDDOS_PROXY_CONFIG.lnk" "${MHDDOS_PROXY_DIR}\mhddos.ini" "" "${MHDDOS_PROXY_DIR}\mhddos_config.ico" 0
 
 SectionEnd
 
 Section	"db1000n"
 	SetOutPath ${DB1000N_DIR}
 	
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_db1000n_in" dir=in action=allow program="${DB1000N_DIR}\db1000n.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_db1000n_out" dir=out action=allow program="${DB1000N_DIR}\db1000n.exe" enable=yes"'
-	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "db1000n.exe""'
+  ;Add mhddos firewall rules
+  !include "firewall\inst_fw_db1000n.nsi"
 	
 	File "resources\itarmy_d1000n.ico"
 
@@ -167,18 +176,12 @@ Section	"db1000n"
 
 SectionEnd
 
-Section	"distress"
+Section /o "distress"
+	SectionIn RO
 	SetOutPath ${DISTRESS_DIR}
 
-	${If} ${RunningX64}
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_in" dir=in action=allow program="${DISTRESS_DIR}\distress_x86_64-pc-windows-msvc.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_out" dir=out action=allow program="${DISTRESS_DIR}\distress_x86_64-pc-windows-msvc.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "distress_x86_64-pc-windows-msvc.exe""'
-	${Else}
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_in" dir=in action=allow program="${DISTRESS_DIR}\distress_i686-pc-windows-msvc.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "netsh advfirewall firewall add rule name="itarmy_distress_out" dir=out action=allow program="${DISTRESS_DIR}\distress_i686-pc-windows-msvc.exe" enable=yes"'
-		nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "distress_i686-pc-windows-msvc.exe""'
-	${EndIf}
+  ;Add mhddos firewall rules
+  !include "firewall\inst_fw_distress.nsi"
 	
 	File "resources\itarmy_distress.ico"
 

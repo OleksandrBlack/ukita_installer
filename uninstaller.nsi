@@ -19,6 +19,7 @@ Section "Uninstall"
   Delete "$DESKTOP\DB1000N.lnk"
   Delete "$DESKTOP\PROXY_FINDER.lnk"
   Delete "$DESKTOP\DISTRESS.lnk"
+  Delete "$DESKTOP\MHDDOS_PROXY_CONFIG.lnk"
 
   ;Remove all registry keys
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}"
@@ -34,32 +35,7 @@ Section "Uninstall"
   RmDir  "$SMPROGRAMS\${PRODUCT}"
   
 	;Delete firewall&&defender rule
-  	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_python_in""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_git_in""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_db1000n_in""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_distress_in""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_mhddos_in""'
-
-  	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_python_out""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_git_out""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_db1000n_out""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_distress_out""'
-	nsExec::Exec 'cmd /c "netsh advfirewall firewall Delete rule name="itarmy_mhddos_out""'
-	
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionPath "$INSTDIR""'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "python.exe""'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "git.exe""'
-	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "db1000n.exe""'
-	${If} ${RunningX64}
-		nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "mhddos_proxy_win.exe""'
-	${Else}
-		nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "mhddos_proxy_win_x86.exe""'
-	${EndIf}
-	${If} ${RunningX64}
-		nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "mhddos_proxy_win.exe""'
-	${Else}
-		nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "mhddos_proxy_win_x86.exe""'
-	${EndIf}
+  !include "firewall\uninst_fw_all.nsi"
 
 SectionEnd
 
