@@ -12,7 +12,7 @@ LangString inf_button ${LANG_ITALIAN} "Scaricare"
 LangString inf_lable_1 ${LANG_ITALIAN} "Per eseguire mhddos_proxy_installer su Windows 7, è necessario installare gli ultimi aggiornamenti."
 LangString inf_lable_2 ${LANG_ITALIAN} "Scaricate ed eseguite l'utility UpdatePack7R2 per aggiornare rapidamente Windows 7 in modo automatico."
 
-LangString mhddos_lang ${LANG_ITALIAN} "--lang IT"
+LangString mhddos_lang ${LANG_ITALIAN} "IT"
 
 LangString open_telegram_link ${LANG_ITALIAN} "Aprire il supporto per Telegram"
 

@@ -12,7 +12,7 @@ LangString inf_button ${LANG_JAPANESE} "ダウンロード"
 LangString inf_lable_1 ${LANG_JAPANESE} "Windows 7上でmhddos_proxy_installerを動作させるには、最新のアップデートをインストールする必要があります。"
 LangString inf_lable_2 ${LANG_JAPANESE} "UpdatePack7R2ユーティリティをダウンロードして実行することで、Windows 7の"
 
-LangString mhddos_lang ${LANG_JAPANESE} "--lang JP"
+LangString mhddos_lang ${LANG_JAPANESE} "JP"
 
 LangString open_telegram_link ${LANG_JAPANESE} "Open Telegram サポート"
 
