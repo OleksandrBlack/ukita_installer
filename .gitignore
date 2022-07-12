@@ -4,3 +4,5 @@ requirements/db1000n
 requirements/db1000n/*.*
 requirements/distress
 requirements/distress/*.*
+requirements/mhddos
+requirements/mhddos/*.*
