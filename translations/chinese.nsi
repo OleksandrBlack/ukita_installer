@@ -13,7 +13,7 @@ LangString open_discord_link ${LANG_TRADCHINESE} "打开Discord支持"
 
 LangString terms_title ${LANG_TRADCHINESE} "使用条款"
 LangString terms_subtitle ${LANG_TRADCHINESE} "使用条款 $(^NameDA)"
-LangString terms_terms ${LANG_TRADCHINESE} "继续安装，你同意:$\n$\r$\n- 使用这些应用程序完全是为了帮助 "乌克兰的IT军队"，其唯一目的是反击俄罗斯的侵略。$\r$\n$\r- 这些工具只能用来对付位于俄罗斯境内或临时占领区的服务器。$\r$\n$\r- 这些工具不能用于恶意、海盗行为、恐怖主义或不人道行为。"
+LangString terms_terms ${LANG_TRADCHINESE} "继续安装，你同意:$\n$\r$\n- 使用这些应用程序完全是为了帮助 '乌克兰的IT军队'，其唯一目的是反击俄罗斯的侵略。$\r$\n$\r- 这些工具只能用来对付位于俄罗斯境内或临时占领区的服务器。$\r$\n$\r- 这些工具不能用于恶意、海盗行为、恐怖主义或不人道行为。"
 LangString terms_firewall ${LANG_TRADCHINESE} "在安装过程中，'Windows防火墙 '和 'Windows Defender '将自动更新为正确的设置，以便应用程序能够正常工作。"
 
 ;MHDDOSSETTINGS
