@@ -9,7 +9,7 @@
 !insertmacro MUI_LANGUAGE "Polish"
 !insertmacro MUI_LANGUAGE "Spanish"
 !insertmacro MUI_LANGUAGE "Ukrainian"
-!insertmacro MUI_LANGUAGE "TradChinese"
+!insertmacro MUI_LANGUAGE "SimpChinese"
 
 ;Installer/Uninstaller translations
 !addincludedir translations
@@ -24,4 +24,4 @@
 !include Polish.nsi
 !include Spanish.nsi
 !include Ukrainian.nsi
-!include TradChinese.nsi
+!include SimpChinese.nsi
