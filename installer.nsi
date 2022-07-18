@@ -198,28 +198,6 @@ Section "distress"
 
 SectionEnd
 
-
-Function .onInit
-
-  StrCpy $Language ${LANG_UKRAINIAN}
-  !insertmacro MUI_LANGDLL_DISPLAY
-
-  ;Search if mhddos_proxy_installer is already installed.
-  FindFirst $0 $1 "$INSTDIR\${UNINSTALLER_NAME}.exe"
-  FindClose $0
-  StrCmp $1 "" done
-
-  ;Copy old value to var so we can call the correct uninstaller
-  StrCpy $uninstallerPath $INSTDIR
-
-  ;Inform the user
-  MessageBox MB_OKCANCEL|MB_ICONINFORMATION $(inst_uninstall_question) /SD IDOK IDOK done
-  Quit
-
-  done:
-
-FunctionEnd
-
 var TelegramCheckbox
 var DiscordCheckbox
 
@@ -245,8 +223,6 @@ ${If} $0 <> 0
 ${EndIf}
 FunctionEnd
 
-
-
 ;--------------------------------
 ;After Installation Function
 
@@ -254,5 +230,26 @@ Function .onInstSuccess
 
   ;Open 'Thank you for installing' site or something else
   ;ExecShell "open" "https://t.me/itarmyofukraine2022"
+
+FunctionEnd
+
+Function .onInit
+
+  StrCpy $Language ${LANG_UKRAINIAN}
+  !insertmacro MUI_LANGDLL_DISPLAY
+
+  ;Search if mhddos_proxy_installer is already installed.
+  FindFirst $0 $1 "$INSTDIR\${UNINSTALLER_NAME}.exe"
+  FindClose $0
+  StrCmp $1 "" done
+
+  ;Copy old value to var so we can call the correct uninstaller
+  StrCpy $uninstallerPath $INSTDIR
+
+  ;Inform the user
+  MessageBox MB_OKCANCEL|MB_ICONINFORMATION $(inst_uninstall_question) /SD IDOK IDOK done
+  Quit
+
+  done:
 
 FunctionEnd

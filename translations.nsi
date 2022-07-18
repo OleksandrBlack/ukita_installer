@@ -1,7 +1,7 @@
 ; nsis translations
 
-!insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "English"
+!insertmacro MUI_LANGUAGE "Dutch"
 !insertmacro MUI_LANGUAGE "German"
 !insertmacro MUI_LANGUAGE "Italian"
 !insertmacro MUI_LANGUAGE "Japanese"
@@ -15,13 +15,13 @@
 !addincludedir translations
 
 ;The languages should be in alphabetical order
-!include dutch.nsi
-!include english.nsi
-!include german.nsi
-!include italian.nsi
-!include japanese.nsi
-!include lithuanian.nsi
-!include polish.nsi
-!include spanish.nsi
-!include ukrainian.nsi
-!include chinese.nsi
+!include English.nsi
+!include Dutch.nsi
+!include German.nsi
+!include Italian.nsi
+!include Japanese.nsi
+!include Lithuanian.nsi
+!include Polish.nsi
+!include Spanish.nsi
+!include Ukrainian.nsi
+!include TradChinese.nsi

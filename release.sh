@@ -1,4 +1,4 @@
-sudo apt-get install -y nsis unzip
+sudo apt-get install -y nsis unzip upx
 
 # db1000n
 wget -q -P requirements/db1000n/x64/ https://github.com/arriven/db1000n/releases/latest/download/db1000n_windows_amd64.zip

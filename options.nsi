@@ -9,11 +9,14 @@
 ;--------------------------------
 ;General
 
-  ;Properly display all languages
+  !packhdr tmpexe.tmp "UPX --best -f -q -v --ultra-brute --all-methods --all-filters --compress-icons=0 tmpexe.tmp" ;upx
+
   Unicode true
+  ManifestDPIAware true
+
   
   SetCompressor /SOLID lzma
-  SetCompressorDictSize 64
+  SetCompressorDictSize 128
   SetDatablockOptimize ON
 
   ;Define name of the product
@@ -57,8 +60,6 @@
   ;Request rights if you want to install the program to program files
   RequestExecutionLevel admin
 
-  ;Properly display all languages
-  Unicode true
 
   ;Show 'console' in installer and uninstaller
   ShowInstDetails "show"
@@ -66,7 +67,6 @@
 
   ;Get installation folder from registry if available
   InstallDirRegKey HKLM "Software\${PRODUCT}" ""
-
 
 ;--------------------------------
 ;Interface Settings
@@ -92,7 +92,12 @@
   ;Optional no descripton for all components
   !define MUI_COMPONENTSPAGE_NODESC
 
-
+;--------------------------------
+;Remember the unistaller/installer language
+  !define MUI_LANGDLL_REGISTRY_ROOT "HKLM"
+  !define MUI_LANGDLL_REGISTRY_KEY "Software\${PRODUCT}"
+  !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
+  
 ;--------------------------------
 ;Pages
   ;For the installer
