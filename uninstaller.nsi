@@ -34,8 +34,22 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\${PRODUCT}\*.*"
   RmDir  "$SMPROGRAMS\${PRODUCT}"
   
-	;Delete firewall&&defender rule
-  !include "firewall\uninst_fw_all.nsi"
+nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionPath "$INSTDIR""'
+
+SimpleFC::RemoveApplication "${DB1000N_DIR}\db1000n.exe"
+nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "db1000n.exe""'
+
+${If} ${RunningX64}
+	SimpleFC::RemoveApplication "${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe"
+	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "mhddos_proxy_win.exe""'
+	SimpleFC::RemoveApplication "${DISTRESS_DIR}\distress_x86_64-pc-windows-msvc.exe"
+	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "distress_x86_64-pc-windows-msvc.exe""'
+${Else}
+	SimpleFC::RemoveApplication "${MHDDOS_PROXY_DIR}\mhddos_proxy_win_x86.exe"
+	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "mhddos_proxy_win_x86.exe""'
+	SimpleFC::RemoveApplication "${DISTRESS_DIR}\distress_i686-pc-windows-msvc.exe"
+	nsExec::Exec 'cmd /c "powershell -exec bypass -Command Remove-MpPreference -ExclusionProcess "distress_i686-pc-windows-msvc.exe""'
+${EndIf}
 
 SectionEnd
 

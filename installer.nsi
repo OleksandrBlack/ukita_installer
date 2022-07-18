@@ -1,3 +1,5 @@
+!addplugindir "plugins\"
+
 Var uninstallerPath
 
 Section "-hidden"
@@ -31,7 +33,7 @@ Section
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayName" "${PRODUCT}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "UninstallString" '"$INSTDIR\${UNINSTALLER_NAME}.exe"'
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayIcon" '"$INSTDIR\itarmy.ico",0'
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "Publisher" "ITARMY of Ukraine"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "Publisher" "IT Army of Ukraine"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "URLInfoAbout" "https://github.com/OleksandrBlack/ukita_installer"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoModify" 1
@@ -115,38 +117,37 @@ Section	"mhddos_proxy"
   SetOutPath ${MHDDOS_PROXY_DIR}
 
   ;Add mhddos firewall rules
-  !include "firewall\inst_fw_mhddos.nsi"
   
   File "resources\mhddos_config.ico"
   
   FileOpen $9 mhddos.ini w
-  FileWrite $9 "###$(mhddos_settings) mhddos_proxy$\r$\n"
+  FileWrite $9 "###$(mhs_settings) mhddos_proxy$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_text_lng):$\r$\n"
+  FileWrite $9 "##$(mhs_text_lng):$\r$\n"
   FileWrite $9 "#lang = ua | en | es | de | pl | lt | nl | jp | it | cn$\r$\n"
-  FileWrite $9 "lang = $(mhddos_lang)$\r$\n"
+  FileWrite $9 "lang = $(mhs_lang)$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_copies):$\r$\n"
+  FileWrite $9 "##$(mhs_copies):$\r$\n"
   FileWrite $9 "#copies = 1 | 2 | auto$\r$\n"
   FileWrite $9 "copies  = 1$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_vpn):$\r$\n"
+  FileWrite $9 "##$(mhs_vpn):$\r$\n"
   FileWrite $9 "#vpn = true | false$\r$\n"
   FileWrite $9 "vpn = false$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_percents):$\r$\n"
+  FileWrite $9 "##$(mhs_percents):$\r$\n"
   FileWrite $9 "#vpn-percents = 2$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_threads):$\r$\n"
+  FileWrite $9 "##$(mhs_threads):$\r$\n"
   FileWrite $9 "#threads = 8000$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_requests)$\r$\n"
+  FileWrite $9 "##$(mhs_requests):$\r$\n"
   FileWrite $9 "#requests-per-connection  = 2000$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_proxy)$\r$\n"
+  FileWrite $9 "##$(mhs_proxy):$\r$\n"
   FileWrite $9 "#proxy = [socks4://114.231.123.38:3065, socks5://114.231.123.38:1080]$\r$\n"
   FileWrite $9 "$\r$\n"
-  FileWrite $9 "##$(mhddos_proxies)$\r$\n"
+  FileWrite $9 "##$(mhs_proxies):$\r$\n"
   FileWrite $9 "#proxies = proxies.txt | https://pastebin.com/raw/UkFWzLOt$\r$\n"
   FileClose $9
   
@@ -155,6 +156,15 @@ Section	"mhddos_proxy"
 	${Else}
 		File /r "requirements\mhddos\x86\*"
 	${EndIf}  
+   
+	DetailPrint "AddAuthorizedApplication UkITA_MHDDOS_PROXY"
+${If} ${RunningX64}
+	SimpleFC::AddApplication "UkITA_MHDDOS_PROXY" "${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" 0 2 "" 1
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "mhddos_proxy_win.exe""'
+${Else}
+	SimpleFC::AddApplication "UkITA_MHDDOS_PROXY" "${MHDDOS_PROXY_DIR}\mhddos_proxy_win_x86.exe" 0 2 "" 1
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "mhddos_proxy_win_x86.exe""'
+${EndIf}
    
   CreateShortCut "$DESKTOP\MHDDOS_PROXY.lnk" "${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" "" "${MHDDOS_PROXY_DIR}\mhddos_proxy_win.exe" 0
   CreateShortCut "$DESKTOP\MHDDOS_PROXY_CONFIG.lnk" "${MHDDOS_PROXY_DIR}\mhddos.ini" "" "${MHDDOS_PROXY_DIR}\mhddos_config.ico" 0
@@ -165,7 +175,6 @@ Section	"db1000n"
 	SetOutPath ${DB1000N_DIR}
 	
   ;Add mhddos firewall rules
-  !include "firewall\inst_fw_db1000n.nsi"
 	
 	File "resources\itarmy_d1000n.ico"
 
@@ -174,6 +183,10 @@ Section	"db1000n"
 	${Else}
 		File /r "requirements\db1000n\x86\*"
 	${EndIf}  
+ 
+	DetailPrint "AddAuthorizedApplication UkITA_DB1000N"
+	SimpleFC::AddApplication "UkITA_DB1000N" "${DB1000N_DIR}\db1000n.exe" 0 2 "" 1
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "db1000n.exe""'
  
 	CreateShortCut "$DESKTOP\DB1000N.lnk" "$INSTDIR\runner.bat" "-itarmy_db1000n" "${DB1000N_DIR}\itarmy_d1000n.ico" 0
 
@@ -184,7 +197,6 @@ Section "distress"
 	SetOutPath ${DISTRESS_DIR}
 
   ;Add mhddos firewall rules
-  !include "firewall\inst_fw_distress.nsi"
 	
 	File "resources\itarmy_distress.ico"
 
@@ -194,6 +206,15 @@ Section "distress"
 		File /r "requirements\distress\x86\*"
 	${EndIf}  
  
+	DetailPrint "AddAuthorizedApplication UkITA_DISTRESS"
+${If} ${RunningX64}
+	SimpleFC::AddApplication "UkITA_DISTRESS" "${DISTRESS_DIR}\distress_x86_64-pc-windows-msvc.exe" 0 2 "" 1
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "distress_x86_64-pc-windows-msvc.exe""'
+${Else}
+	SimpleFC::AddApplication "UkITA_DISTRESS" "${DISTRESS_DIR}\distress_i686-pc-windows-msvc.exe" 0 2 "" 1
+	nsExec::Exec 'cmd /c "powershell -ExecutionPolicy Bypass -NoProfile -Command Add-MpPreference -ExclusionProcess "distress_i686-pc-windows-msvc.exe""'
+${EndIf}
+
 	CreateShortCut "$DESKTOP\DISTRESS.lnk" "$INSTDIR\runner.bat" "-itarmy_distress" "${DISTRESS_DIR}\itarmy_distress.ico" 0
 
 SectionEnd

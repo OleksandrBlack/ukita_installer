@@ -9,7 +9,7 @@
 ;--------------------------------
 ;General
 
-  !packhdr tmpexe.tmp "UPX --best -f -q -v --ultra-brute --all-methods --all-filters --compress-icons=0 tmpexe.tmp" ;upx
+!packhdr tmpexe.tmp "UPX --best -f -q -v --ultra-brute --all-methods --all-filters --compress-icons=0 tmpexe.tmp" ;upx
 
   Unicode true
   ManifestDPIAware true
@@ -40,8 +40,8 @@
   ;Installer Version Information
   VIAddVersionKey "ProductName" "${PRODUCT}"
   VIAddVersionKey "CompanyName" "IT ARMY of Ukraine"
-  VIAddVersionKey "LegalCopyright" "Copyright ©2022 UA ItArmy Installer"
-  VIAddVersionKey "FileDescription" "UA ItArmy Installer"
+  VIAddVersionKey "LegalCopyright" "Copyright ©2022 UkITA Installer"
+  VIAddVersionKey "FileDescription" "UkITA Installer"
   VIAddVersionKey "FileVersion" "${PRODUCT_VERSION}"
   VIProductVersion "${PRODUCT_VERSION}.0"
 
@@ -66,7 +66,7 @@
   ShowUninstDetails "show"
 
   ;Get installation folder from registry if available
-  InstallDirRegKey HKLM "Software\${PRODUCT}" ""
+  InstallDirRegKey HKLM "Software\${PRODUCT}" "InstallLocation"
 
 ;--------------------------------
 ;Interface Settings
