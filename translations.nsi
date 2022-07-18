@@ -9,7 +9,7 @@
 !insertmacro MUI_LANGUAGE "Polish"
 !insertmacro MUI_LANGUAGE "Spanish"
 !insertmacro MUI_LANGUAGE "Ukrainian"
-!insertmacro MUI_LANGUAGE "Сhinese"
+!insertmacro MUI_LANGUAGE "TradChinese"
 
 ;Installer/Uninstaller translations
 !addincludedir translations
