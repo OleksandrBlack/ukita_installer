@@ -24,4 +24,4 @@
 !include polish.nsi
 !include spanish.nsi
 !include ukrainian.nsi
-!include сhinese.nsi
+!include chinese.nsi
