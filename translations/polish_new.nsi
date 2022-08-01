@@ -1,5 +1,3 @@
-;Installer strings
-
 LangString inst_unist ${LANG_POLISH} "Odinstalowanie poprzedniej wersji."
 LangString inst_uninstall_question ${LANG_POLISH} "Obecna wersja zostanie odinstalowana."
 
@@ -17,7 +15,6 @@ LangString terms_subtitle ${LANG_POLISH} "Warunki uzytkowania $(^NameDA)"
 LangString terms_terms ${LANG_POLISH} "Kontynuujac instalacje, zgadzasz sie, ze:$\n$\r$\n- Korzystanie z tych aplikacji jest scisle zwiazane z pomoca IT Army of Ukraine wylacznie w celu przeciwdzialania rosyjskiej agresji.$\r$\n$\r- Te narzedzia moga byc uzywane tylko przeciwko serwerom znajdujacym sie na terytorium Rosji lub na terytoriach tymczasowo okupowanych.$\r$\n$\r- Narzedzia te nie moga byc uzywane w zlych zamiarach, piractwie, terroryzmie lub nieludzkich aktach."
 LangString terms_firewall ${LANG_POLISH} "Podczas instalacji Windows Firewall i Windows Defender zostana automatycznie zaktualizowane o prawidlowe ustawienia, aby aplikacje dzialaly poprawnie."
 
-;MHDDOSSETTINGS
 LangString mhs_settings ${LANG_POLISH} "Ustawienia"
 LangString mhs_text_lng ${LANG_POLISH} "Zmiana jezyka"
 LangString mhs_lang ${LANG_POLISH} "PL"

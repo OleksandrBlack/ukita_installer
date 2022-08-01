@@ -152,9 +152,9 @@ Section	"mhddos_proxy"
   FileClose $9
   
 	${If} ${RunningX64}
-		File /r "requirements\mhddos\x64\*"
+		File /nonfatal /r "requirements\mhddos\x64\*"
 	${Else}
-		File /r "requirements\mhddos\x86\*"
+		File /nonfatal /r "requirements\mhddos\x86\*"
 	${EndIf}  
    
 	DetailPrint "AddAuthorizedApplication UkITA_MHDDOS_PROXY"
@@ -179,9 +179,9 @@ Section	"db1000n"
 	File "resources\itarmy_d1000n.ico"
 
 	${If} ${RunningX64}
-		File /r "requirements\db1000n\x64\*"
+		File /nonfatal /r "requirements\db1000n\x64\*"
 	${Else}
-		File /r "requirements\db1000n\x86\*"
+		File /nonfatal /r "requirements\db1000n\x86\*"
 	${EndIf}  
  
 	DetailPrint "AddAuthorizedApplication UkITA_DB1000N"
@@ -201,9 +201,9 @@ Section "distress"
 	File "resources\itarmy_distress.ico"
 
 	${If} ${RunningX64}
-		File /r "requirements\distress\x64\*"
+		File /nonfatal /r "requirements\distress\x64\*"
 	${Else}
-		File /r "requirements\distress\x86\*"
+		File /nonfatal /r "requirements\distress\x86\*"
 	${EndIf}  
  
 	DetailPrint "AddAuthorizedApplication UkITA_DISTRESS"

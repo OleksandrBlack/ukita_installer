@@ -27,7 +27,7 @@
   
   !define telegram_link "https://t.me/itarmyofukraine2022"
   
-  !define discord_link "https://discord.gg/fyK45psV"
+  !define discord_link "https://discord.gg/DBYFvGQypD"
   
   BrandingText "${PRODUCT} ${PRODUCT_VERSION}"
   

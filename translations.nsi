@@ -16,4 +16,4 @@
 !include lithuanian.nsi
 !include spanish.nsi
 !include ukrainian.nsi
-!include polish.nsi
+!include polish_new.nsi
