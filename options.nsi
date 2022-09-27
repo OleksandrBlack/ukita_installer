@@ -102,7 +102,7 @@
 ;Pages
   ;For the installer
   !insertmacro MUI_PAGE_WELCOME # simply remove this and other pages if you don't want it
-  
+  Page Custom MyPageFunc MyPageFuncLeave
   Page Custom Page_Win7Info
   
   !insertmacro MUI_PAGE_LICENSE "LICENSE" # link to an ANSI encoded license file
