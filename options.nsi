@@ -21,7 +21,7 @@
 
   ;Define name of the product
   !define PRODUCT "UkITA Installer"
-  !define PRODUCT_VERSION "2.0.9"
+  !define PRODUCT_VERSION "2.1.0"
   !define INSTALLER_NAME "ukita_installer"
   !define UNINSTALLER_NAME "uninstall"
   
@@ -36,6 +36,7 @@
   !define DB1000N_DIR "$INSTDIR\db1000n"
   
   !define DISTRESS_DIR "$INSTDIR\distress"
+  
 
   ;Installer Version Information
   VIAddVersionKey "ProductName" "${PRODUCT}"
@@ -102,7 +103,7 @@
 ;Pages
   ;For the installer
   !insertmacro MUI_PAGE_WELCOME # simply remove this and other pages if you don't want it
-  
+
   Page Custom Page_Win7Info
   
   !insertmacro MUI_PAGE_LICENSE "LICENSE" # link to an ANSI encoded license file
@@ -110,7 +111,7 @@
   !insertmacro MUI_PAGE_DIRECTORY
   
   Page Custom Page_TermsOfUse
-  
+  Page Custom UserIDPage UserIDPageLeave
   !insertmacro MUI_PAGE_INSTFILES
 
   !define MUI_PAGE_CUSTOMFUNCTION_SHOW ShowFinishCheckbox

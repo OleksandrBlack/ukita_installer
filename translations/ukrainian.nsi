@@ -28,3 +28,11 @@ LangString mhs_threads ${LANG_UKRAINIAN} "Кількість потоків на
 LangString mhs_requests ${LANG_UKRAINIAN} "Скільки запитів надсилати за одне з’єднання (за замовчуванням is 2000)"
 LangString mhs_proxy ${LANG_UKRAINIAN} "Щоб указати особисті проксі-сервери, використовуйте опцію proxy"
 LangString mhs_proxies ${LANG_UKRAINIAN} "Якщо список проксі-серверів завеликий, скористайтеся локальним або віддаленим файлом проксі. Кожен проксі має бути в новому рядку"
+
+;USERID
+LangString userid_title ${LANG_UKRAINIAN} "Персональний ідентифікатор"
+LangString userid_subtitle ${LANG_UKRAINIAN} "Додати персональний ідентифікатор"
+LangString userid_labe1 ${LANG_UKRAINIAN} "Наш новий телеграм ботик навчився надавати персональний ідентифікатор учасника ddos атаки."
+LangString userid_labe2 ${LANG_UKRAINIAN} "А якщо запустити ddos утиліту з ідентифікатором, ботик з легкістю надасть інформативну персональну статистику."
+LangString userid_labe3 ${LANG_UKRAINIAN} "Більше подробиць на сайті:"
+LangString userid_checkbox ${LANG_UKRAINIAN} "Додати ідентифікатор"
