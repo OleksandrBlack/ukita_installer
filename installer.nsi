@@ -95,16 +95,28 @@ Section ;RUNNER
   FileWrite $9 ":ITARMY_DB1000N$\r$\n"
   FileWrite $9 "CD ${DB1000N_DIR}$\r$\n"
   FileWrite $9 "ECHO Start DB1000N Attack ItArmy Targets$\r$\n"
-  FileWrite $9 "db1000n.exe -enable-self-update$\r$\n"
+  ${If} $UserID_State == ${BST_CHECKED}
+	FileWrite $9 "db1000n.exe -enable-self-update --user-id $UserID$\r$\n"
+  ${Else}
+	FileWrite $9 "db1000n.exe -enable-self-update$\r$\n"
+  ${EndIf}
   FileWrite $9 "goto END$\r$\n"
   
   FileWrite $9 ":ITARMY_DISTRESS$\r$\n"
   FileWrite $9 "CD ${DISTRESS_DIR}$\r$\n"
   FileWrite $9 "ECHO Start DISTRESS Attack ItArmy Targets$\r$\n"
   ${If} ${RunningX64}
-	FileWrite $9 "distress_x86_64-pc-windows-msvc.exe -c 4096$\r$\n"
+	${If} $UserID_State == ${BST_CHECKED}
+		FileWrite $9 "distress_x86_64-pc-windows-msvc.exe -c 4096 --user-id $UserID$\r$\n"
+	${Else}
+		FileWrite $9 "distress_x86_64-pc-windows-msvc.exe -c 4096$\r$\n"
+	${EndIf}
   ${Else}
-	FileWrite $9 "distress_i686-pc-windows-msvc.exe -c 2048$\r$\n"
+	${If} $UserID_State == ${BST_CHECKED}
+		FileWrite $9 "distress_i686-pc-windows-msvc.exe -c 2048 --user-id $UserID$\r$\n"
+	${Else}
+		FileWrite $9 "distress_i686-pc-windows-msvc.exe -c 2048$\r$\n"
+	${EndIf}
   ${EndIf}
   FileWrite $9 "goto END$\r$\n"
 
@@ -122,6 +134,13 @@ Section	"mhddos_proxy"
   
   FileOpen $9 mhddos.ini w
   FileWrite $9 "###$(mhs_settings) mhddos_proxy###$\r$\n"
+  FileWrite $9 "$\r$\n"
+  FileWrite $9 "##$(userid_title) (https://t.me/itarmy_stat_bot)##$\r$\n"
+  ${If} $UserID_State == ${BST_CHECKED}
+	FileWrite $9 "user-id=$UserID$\r$\n"
+  ${Else}
+	FileWrite $9 "#user-id=your personal statistics identifier$\r$\n"
+  ${EndIf}
   FileWrite $9 "$\r$\n"
   FileWrite $9 "##$(mhs_text_lng)##$\r$\n"
   FileWrite $9 "#lang = ua | en | es | de | pl | lt$\r$\n"

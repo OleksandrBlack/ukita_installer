@@ -1,39 +1,3 @@
-Var txt
-Var myTextBox
-Var CheckBox1
-
-Function MyPageFunc
-    nsDialogs::Create 1018
-	
-	  ; === CheckBox1 (type: Checkbox) ===
-  ${NSD_CreateCheckbox} 115u 36u 68u 15u "CheckBox1"
-  Pop $CheckBox1
-  
-${NSD_OnClick} $CheckBox1 nsDialogsPageCheckChange
-
-
-
-    ${NSD_CreateLabel} 0 0 50u 10u "Username:"
-    ${NSD_CreateText} 70 0 100u 12u ""
-    Pop $myTextBox
-	EnableWindow $myTextBox 0
-    nsDialogs::Show
-FunctionEnd
-
-Function nsDialogsPageCheckChange
-${NSD_GetState} $CheckBox1 $1
-${If} $1 == 0
-	EnableWindow $myTextBox 0
-${Else}
-	EnableWindow $myTextBox 1
-${EndIf}
-FunctionEnd
-
-Function MyPageFuncLeave
-    ${NSD_GetText} $myTextBox $txt
-FunctionEnd
-
-
 Var info_down_btn
 Var info_label_1
 Var info_label_2
