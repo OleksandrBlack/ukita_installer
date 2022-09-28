@@ -16,20 +16,20 @@ Function UserIDPage
 
 	!insertmacro MUI_HEADER_TEXT "$(userid_title)" "$(userid_subtitle)"
 
-	${NSD_CreateLabel} 30u 1u 259u 20u "$(userid_labe1)"
+	${NSD_CreateLabel} 30u 1u 259u 35u "$(userid_labe1)"
 	Pop $UserID_Label
-	${NSD_CreateLink} 93u 20u 100u 14u "https://t.me/itarmy_stat_bot"
+	${NSD_CreateLink} 93u 40u 100u 10u "https://t.me/itarmy_stat_bot"
 	Pop $UserID_Link1
-	${NSD_CreateLabel} 30u 35u 259u 20u "$(userid_labe2)"
+	${NSD_CreateLabel} 30u 55u 259u 25u "$(userid_labe2)"
 	Pop $UserID_Labe2
-	${NSD_CreateLabel} 95u 54u 122u 14u "$(userid_labe3)"
+	${NSD_CreateLabel} 95u 80u 122u 10u "$(userid_labe3)"
 	Pop $UserID_Labe3
-	${NSD_CreateLink} 90u 68u 110u 14u "https://itarmy.com.ua/statistics"
+	${NSD_CreateLink} 90u 90u 110u 10u "https://itarmy.com.ua/statistics"
 	Pop $UserID_Link2
-	${NSD_CreateCheckbox} 98u 95u 100u 15u "$(userid_checkbox)"
+	${NSD_CreateCheckbox} 98u 105u 100u 10u "$(userid_checkbox)"
 	Pop $UserID_CheckBox
 	${NSD_OnClick} $UserID_CheckBox UserIDCheckChange
-    ${NSD_CreateNumber} 111u 113u 66u 12u ""
+    ${NSD_CreateNumber} 111u 120u 66u 12u ""
     Pop $UserID_InputBox
 	SendMessage $UserID_InputBox ${WM_SETFONT} $UserID_Font 0
 	${NSD_SetTextLimit} $UserID_InputBox 9
