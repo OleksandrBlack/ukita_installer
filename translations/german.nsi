@@ -28,3 +28,11 @@ LangString mhs_threads ${LANG_GERMAN} "Anzahl der Threads pro Kopie (Standardwer
 LangString mhs_requests ${LANG_GERMAN} "Wie viele Anfragen auf einer einzigen Verbindung gesendet werden sollen (Standard ist 2000)"
 LangString mhs_proxy ${LANG_GERMAN} "Um benutzerdefinierte Proxy(s) anzugeben, verwenden Sie die Option proxy"
 LangString mhs_proxies ${LANG_GERMAN} "Wenn die Liste der Proxys zu groß ist, verwenden Sie die Option proxys für lokale oder entfernte Dateien. Jeder Proxy sollte in einer neuen Zeile stehen"
+
+;USERID
+LangString userid_title ${LANG_GERMAN} "Personalausweis"
+LangString userid_subtitle ${LANG_GERMAN} "Fügen Sie eine persönliche ID hinzu"
+LangString userid_labe1 ${LANG_GERMAN} "Unser neuer Bot hat gelernt, die ID eines Teilnehmers an einem DDoS-Angriff bereitzustellen. Dies ist nicht Ihre Telegramm-ID oder persönliche Informationen, sondern eine zufällig generierte ID, mit der Sie den Fortschritt von DDoS-Angriffen verfolgen können."
+LangString userid_labe2 ${LANG_GERMAN} "Und wenn Sie das Dienstprogramm ddos ​​​​mit der ID ausführen, liefert der Bot problemlos aussagekräftige persönliche Statistiken."
+LangString userid_labe3 ${LANG_GERMAN} "Näheres auf der Website:"
+LangString userid_checkbox ${LANG_GERMAN} "ID hinzufügen"
