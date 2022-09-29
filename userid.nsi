@@ -22,12 +22,14 @@ ${If} $LANGUAGE == ${LANG_UKRAINIAN} ;UserID temporarily only for Ukraine
 	Pop $UserID_Label
 	${NSD_CreateLink} 93u 40u 100u 10u "https://t.me/itarmy_stat_bot"
 	Pop $UserID_Link1
+	${NSD_OnClick} $UserID_Link1 BotLink
 	${NSD_CreateLabel} 30u 55u 259u 25u "$(userid_labe2)"
 	Pop $UserID_Labe2
 	${NSD_CreateLabel} 95u 80u 122u 10u "$(userid_labe3)"
 	Pop $UserID_Labe3
 	${NSD_CreateLink} 90u 90u 110u 10u "https://itarmy.com.ua/statistics"
 	Pop $UserID_Link2
+	${NSD_OnClick} $UserID_Link2 StatisticsLink
 	${NSD_CreateCheckbox} 98u 105u 100u 10u "$(userid_checkbox)"
 	Pop $UserID_CheckBox
 	${NSD_OnClick} $UserID_CheckBox UserIDCheckChange
@@ -39,6 +41,16 @@ ${If} $LANGUAGE == ${LANG_UKRAINIAN} ;UserID temporarily only for Ukraine
 	EnableWindow $UserID_InputBox 0
     nsDialogs::Show
 ${EndIf}
+FunctionEnd
+
+Function BotLink
+	Pop $0
+	ExecShell "open" "https://t.me/itarmy_stat_bot"
+FunctionEnd
+
+Function StatisticsLink
+	Pop $0
+	ExecShell "open" "https://itarmy.com.ua/statistics"
 FunctionEnd
 
 Function UserIDCheckChange
