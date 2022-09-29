@@ -25,3 +25,11 @@ LangString mhs_threads ${LANG_POLISH} "Liczba watkow na kopie (domyslnie 8000)"
 LangString mhs_requests ${LANG_POLISH} "Ile zadan ma byc wyslanych na jednym polaczeniu (domyslnie 2000)"
 LangString mhs_proxy ${LANG_POLISH} "Aby okreslic wlasne proxy, uzyj opcji proxy"
 LangString mhs_proxies ${LANG_POLISH} "Jesli lista proxy jest zbyt duza, uzyj opcji proxy w pliku lokalnym lub zdalnym. Kazdy proxy powinien znajdowac sie w nowej linii"
+
+;USERID
+LangString userid_title ${LANG_ENGLISH} "Identyfikator telegramu"
+LangString userid_subtitle ${LANG_ENGLISH} "Dodaj osobisty identyfikator Telegram Bota"
+LangString userid_labe1 ${LANG_ENGLISH} "Nasz nowy bot Telegram nauczył się podawać osobisty identyfikator uczestnika ataku ddos."
+LangString userid_labe2 ${LANG_ENGLISH} "A jeśli uruchomisz narzędzie ddos z identyfikatorem, bot z łatwością dostarczy pouczające statystyki osobiste.."
+LangString userid_labe3 ${LANG_ENGLISH} "Więcej szczegółów na stronie:"
+LangString userid_checkbox ${LANG_ENGLISH} "Dodaj identyfikator"

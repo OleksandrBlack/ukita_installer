@@ -28,3 +28,11 @@ LangString mhs_threads ${LANG_SPANISH} "Número de hilos por copia (por defecto 
 LangString mhs_requests ${LANG_SPANISH} "Cuántas peticiones enviar en una sola conexión (por defecto son 2000)"
 LangString mhs_proxy ${LANG_SPANISH} "Para especificar proxy(s) personalizados, utilice la opción proxy"
 LangString mhs_proxies ${LANG_SPANISH} "Si la lista de proxies es demasiado grande, utilice la opción de archivo local o remoto proxies. Cada proxy debe estar en una nueva línea"
+
+;USERID
+LangString userid_title ${LANG_ENGLISH} "ID de telegrama"
+LangString userid_subtitle ${LANG_ENGLISH} "Agregar un identificador personal de Telegram Bot"
+LangString userid_labe1 ${LANG_ENGLISH} "Nuestro nuevo bot de Telegram ha aprendido a proporcionar el ID personal de un participante en un ataque ddos."
+LangString userid_labe2 ${LANG_ENGLISH} "Y si ejecuta la utilidad ddos con la identificación, el bot proporcionará fácilmente estadísticas personales informativas.."
+LangString userid_labe3 ${LANG_ENGLISH} "Más detalles en el sitio web:"
+LangString userid_checkbox ${LANG_ENGLISH} "Agregar identificador"

@@ -32,7 +32,7 @@ LangString mhs_proxies ${LANG_GERMAN} "Wenn die Liste der Proxys zu groß ist, v
 ;USERID
 LangString userid_title ${LANG_GERMAN} "Personalausweis"
 LangString userid_subtitle ${LANG_GERMAN} "Fügen Sie eine persönliche ID hinzu"
-LangString userid_labe1 ${LANG_GERMAN} "Unser neuer Bot hat gelernt, die ID eines Teilnehmers an einem DDoS-Angriff bereitzustellen. Dies ist nicht Ihre Telegramm-ID oder persönliche Informationen, sondern eine zufällig generierte ID, mit der Sie den Fortschritt von DDoS-Angriffen verfolgen können."
-LangString userid_labe2 ${LANG_GERMAN} "Und wenn Sie das Dienstprogramm ddos ​​​​mit der ID ausführen, liefert der Bot problemlos aussagekräftige persönliche Statistiken."
+LangString userid_labe1 ${LANG_GERMAN} "Unser neuer Telegram-Bot hat gelernt, die persönliche ID eines Teilnehmers an einem DDoS-Angriff bereitzustellen."
+LangString userid_labe2 ${LANG_GERMAN} "Und wenn Sie das Dienstprogramm ddos mit der ID ausführen, liefert der Bot problemlos aussagekräftige persönliche Statistiken."
 LangString userid_labe3 ${LANG_GERMAN} "Näheres auf der Website:"
 LangString userid_checkbox ${LANG_GERMAN} "ID hinzufügen"

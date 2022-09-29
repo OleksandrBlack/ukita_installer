@@ -32,7 +32,7 @@ LangString mhs_proxies ${LANG_LITHUANIAN} "Jei tarpinių serverių sąrašas per
 ;USERID
 LangString userid_title ${LANG_LITHUANIAN} "Asmens ID"
 LangString userid_subtitle ${LANG_LITHUANIAN} "Pridėkite asmeninį identifikatorių"
-LangString userid_labe1 ${LANG_LITHUANIAN} "Mūsų naujasis robotas išmoko pateikti DDoS atakos dalyvio ID. Tai nėra jūsų „Telegram“ ID ar bet kokia asmeninė informacija, o atsitiktinai sugeneruotas ID, kurį galite naudoti norėdami stebėti DDoS atakų eigą."
+LangString userid_labe1 ${LANG_LITHUANIAN} "Mūsų naujasis Telegram robotas išmoko pateikti ddos atakos dalyvio asmens ID."
 LangString userid_labe2 ${LANG_LITHUANIAN} "Ir jei paleisite ddos programą su ID, robotas lengvai pateiks informatyvią asmeninę statistiką."
 LangString userid_labe3 ${LANG_LITHUANIAN} "Daugiau informacijos svetainėje:"
 LangString userid_checkbox ${LANG_LITHUANIAN} "Pridėti ID"

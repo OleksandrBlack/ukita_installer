@@ -32,7 +32,7 @@ LangString mhs_proxies ${LANG_ENGLISH} "If the list of proxies is too big, use t
 ;USERID
 LangString userid_title ${LANG_ENGLISH} "Telegram ID"
 LangString userid_subtitle ${LANG_ENGLISH} "Add a personal Telegram Bot identifier"
-LangString userid_labe1 ${LANG_ENGLISH} "Our new Telegram bot has learned to provide a randomly-created ID of a participant in any DDoS attack using IT Army of Ukraine tools. This is not your Telegram ID or any personal information, but a randomly generated ID that we can use to track the progress of DDoS attacks."
-LangString userid_labe2 ${LANG_ENGLISH} "And if you run the DDoS utility with the ID generated for you, the Telegram Bot will provide informative personal statistics for you about the success of the attacks. This will allow you to know how successful the attack is."
+LangString userid_labe1 ${LANG_ENGLISH} "Our new Telegram bot has learned to provide the personal ID of a participant in a ddos attack."
+LangString userid_labe2 ${LANG_ENGLISH} "And if you run the ddos utility with the ID, the bot will easily provide informative personal statistics.."
 LangString userid_labe3 ${LANG_ENGLISH} "More details on the website:"
 LangString userid_checkbox ${LANG_ENGLISH} "Add identifier"
