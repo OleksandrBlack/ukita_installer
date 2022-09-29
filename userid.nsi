@@ -1,3 +1,4 @@
+
 Var UserID
 Var UserID_InputBox
 Var UserID_CheckBox
@@ -10,6 +11,7 @@ Var UserID_Link1
 Var UserID_Link2
 
 Function UserIDPage
+${If} $LANGUAGE == ${LANG_UKRAINIAN} ;UserID temporarily only for Ukraine
 	CreateFont $UserID_Font "Microsoft Sans Serif" "8.25" "700"
 
     nsDialogs::Create 1018
@@ -36,6 +38,7 @@ Function UserIDPage
 	SetCtlColors $UserID_InputBox 0x0066CC 0xE3E3E3
 	EnableWindow $UserID_InputBox 0
     nsDialogs::Show
+${EndIf}
 FunctionEnd
 
 Function UserIDCheckChange
