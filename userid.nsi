@@ -36,7 +36,7 @@ Function UserIDPage
     ${NSD_CreateNumber} 111u 120u 66u 12u ""
     Pop $UserID_InputBox
 	SendMessage $UserID_InputBox ${WM_SETFONT} $UserID_Font 0
-	${NSD_SetTextLimit} $UserID_InputBox 9
+	${NSD_SetTextLimit} $UserID_InputBox 11
 	SetCtlColors $UserID_InputBox 0x0066CC 0xE3E3E3
 	EnableWindow $UserID_InputBox 0
     nsDialogs::Show
