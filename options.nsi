@@ -21,7 +21,7 @@
 
   ;Define name of the product
   !define PRODUCT "UkITA Installer"
-  !define PRODUCT_VERSION "2.1.0"
+  !define PRODUCT_VERSION "2.1.1"
   !define INSTALLER_NAME "ukita_installer"
   !define UNINSTALLER_NAME "uninstall"
   
